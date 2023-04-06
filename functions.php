@@ -24,7 +24,11 @@ add_action( 'wp_enqueue_scripts', 'chld_thm_cfg_parent_css', 10 );
 // END ENQUEUE PARENT ACTION
 
 function enqueue_my_script() {
-    wp_enqueue_script( 'my-script', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'my-script', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), '1.0', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_my_script' );
+
+
+  
+
