@@ -125,7 +125,9 @@
 
 							}
 							?>
-							<?php get_template_part('templates_part/contact', 'modal'); ?>
+							<button id="myBtn">CONTACT</button>
+							<?php get_template_part('template_parts/contact', 'modal'); ?>
+							
 						</ul>
 
 					</nav><!-- .primary-menu-wrapper -->
@@ -149,7 +151,7 @@
 									data-set-focus=".close-nav-toggle">
 									<span class="toggle-inner">
 										<span class="toggle-text">
-										<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Logo.png" alt="Logo">
+										<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Logo.png" alt="Logo"> -->
 
 											<?php _e('Menu', 'twentytwenty'); ?>
 										</span>

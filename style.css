@@ -42,6 +42,13 @@ Updated: 2023-04-06 07:42:41
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* --------------------------Le header------------------------------- */
 .site-logo a img {
     width: 216px !important;
@@ -151,6 +158,14 @@ body:not(.overlay-header) .primary-menu li a:hover {
     background-color: white;
     padding: 8px;
     padding-left: 17px;
+    text-decoration: none;
+}
+
+
+
+#myBtn:hover {
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .modal {
@@ -229,33 +244,188 @@ label {
 .close {
     display: none;
 }
-  
-  .title {
+
+.title1 {
     position: absolute;
     top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    height: 200px; /* adjust this value to the height of your image */
+    height: 200px;
     background-image: url('img/Contact.png');
     background-repeat: repeat-x;
     background-position: center;
     z-index: 2;
-  }
+}
 
-  .title1 {
+.title2 {
     position: absolute;
     top: 12%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    height: 200px; 
+    height: 200px;
     background-image: url('img/Contact.png');
     background-repeat: repeat-x;
     background-position: center;
     z-index: 2;
-  }
-  
-  .modal-content form {
-    margin-top: 140px; 
-  }
+}
+
+.modal-content form {
+    margin-top: 140px;
+}
+
+
+
+/*------------------------------------ La page d'info---------------------------------*/
+
+.site-content-single {
+    padding: 0 80px;
+    position: relative;
+}
+
+
+
+.photo-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    padding: 0;
+}
+
+.site-content-single:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.photo-info h2 {
+    font-family: 'Space Mono';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 66px;
+    line-height: 58px;
+}
+
+.photo-info p {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.photo-info {
+    width: 50%;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.photo-description {
+    width: 47%;
+    box-sizing: border-box;
+    margin-top: 38px;
+}
+
+.photo-image-container {
+
+    height: 100%;
+    position: relative;
+
+}
+
+.photo-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-content {
+    display: flex;
+    padding: 48px 0;
+    border-bottom: solid 1px;
+    margin-left: 7px;
+
+}
+
+.contact-content p {
+    border-right: solid 3px;
+    margin: 1em 0;
+    padding: 10px 37px 10px 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+#myOtherBtn {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: white;
+    color: black !important;
+    padding-left: 37px;
+}
+
+.styled-separator {
+    display: none;
+}
+
+.wp-block-image {
+    margin: 0 !important;
+}
+
+/* La pagination */
+
+.thumbnail {
+    display: none;
+}
+
+.pagination-thumbnails:hover .thumbnail {
+    display: block;
+}
+
+.pagination-thumbnails .arrow {
+    font-size: 1em;
+    /* adjust the size as needed */
+    display: inline-block;
+    padding: 0.2em;
+    color: black;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+
+.pagination-single {
+
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0 !important;
+}
+
+.pagination-thumbnails {
+    border-bottom: solid 1px;
+    margin: 0 86px;
+    width: 85%;
+}
+
+.section-like {
+    margin: 0 86px;
+    padding-top: 0;
+}
+
+.section-like h3 {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}

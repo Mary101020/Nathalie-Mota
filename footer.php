@@ -13,8 +13,7 @@
 
 ?>
 <footer id="site-footer" class="header-footer-group">
-<?php get_template_part( 'templates_part/contact', 'modal' ); ?>
-<button id="myBtn">Open Modal</button>
+
 	<div class="section-inner">
 
 		<div class="footer-credits">
