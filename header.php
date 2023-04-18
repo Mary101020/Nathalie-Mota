@@ -19,6 +19,11 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+
+
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
@@ -80,13 +85,17 @@
 					<span class="toggle-inner">
 
 						<span class="toggle-icon">
+							
+						<i class="fa-thin fa-bars"></i>
+
 							<?php twentytwenty_the_theme_svg('ellipsis'); ?>
 						</span>
 						<span class="toggle-text">
 							<?php _e('Menu', 'twentytwenty'); ?>
 						</span>
 					</span>
-				</button><!-- .nav-toggle -->
+				</button>
+				<!-- .nav-toggle -->
 
 			</div><!-- .header-titles-wrapper -->
 
@@ -127,7 +136,7 @@
 							?>
 							<button id="myBtn">CONTACT</button>
 							<?php get_template_part('template_parts/contact', 'modal'); ?>
-							
+
 						</ul>
 
 					</nav><!-- .primary-menu-wrapper -->
@@ -151,7 +160,7 @@
 									data-set-focus=".close-nav-toggle">
 									<span class="toggle-inner">
 										<span class="toggle-text">
-										<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Logo.png" alt="Logo"> -->
+											<!-- <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/Logo.png" alt="Logo"> -->
 
 											<?php _e('Menu', 'twentytwenty'); ?>
 										</span>
@@ -209,3 +218,4 @@
 	<?php
 	// Output the menu modal.
 	get_template_part('template-parts/modal-menu');
+	?>

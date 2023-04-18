@@ -68,6 +68,17 @@ Updated: 2023-04-06 07:42:41
     font-size: 16px;
     line-height: 24px;
 }
+.menu-top{
+    height: 80%;
+}
+
+.menu-modal nav *{
+    height: 100%;
+}
+
+.nav-toggle .toggle-icon, .nav-toggle svg {
+    height: 1.3rem;
+}
 
 @media screen and (max-width: 999px) {
 
@@ -82,6 +93,20 @@ Updated: 2023-04-06 07:42:41
     }
 }
 
+
+@media screen and (max-width: 999px) {
+#myBtn {
+    font-family: 'Space Mono' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 23px !important;
+    line-height: 34px !important;
+    color: #fff !important;
+    background-color: #E00000 !important;
+    padding: 0 !important;
+}}
+
+
 .menu-modal nav * {
     border-top: none;
     border-bottom: none;
@@ -94,7 +119,7 @@ Updated: 2023-04-06 07:42:41
 
 .mobile-menu {
     display: block;
-    background-color: red;
+    background-color: #E00000;
     height: 100%;
 }
 
@@ -106,6 +131,26 @@ body:not(.overlay-header) .primary-menu li a:hover {
 
 .toggle-text {
     display: none;
+}
+
+.button.close-nav-toggle {
+    width: auto;
+}
+
+.mobile-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 45px;
+}
+
+.mobile-logo img {
+    object-fit: contain;
+}
+
+button.close-nav-toggle svg {
+    height: 3rem;
+    width: 3rem;
 }
 
 /* --------------------------Le footer------------------------------- */
@@ -149,7 +194,7 @@ body:not(.overlay-header) .primary-menu li a:hover {
 /*------------------------------------ La Modale---------------------------------*/
 
 #myBtn {
-    color: black !important;
+    color: black ;
     font-family: 'Space Mono';
     font-style: normal;
     font-weight: 400;
