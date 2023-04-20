@@ -401,7 +401,6 @@ label {
 }
 
 .contact-content p {
-    border-right: solid 3px;
     margin: 1em 0;
     padding: 10px 37px 10px 0;
     font-family: 'Poppins';
@@ -418,13 +417,49 @@ label {
     font-size: 14px;
     line-height: 21px;
     background-color: white;
+    color: black ;
+    padding: 10px 20px;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  #myOtherBtn {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: transparent;
     color: black !important;
-    padding-left: 37px;
-}
+    padding: 0 37px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  #myOtherBtn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    width: 0%;
+    z-index: -1;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  #myOtherBtn:hover::before {
+    width: 100%;
+  }
+  
+  #myOtherBtn:hover {
+    color: white !important;
+    text-decoration: none;
+  }
+  
 
-.styled-separator {
-    display: none;
-}
+
 
 .wp-block-image {
     margin: 0 !important;
@@ -480,17 +515,7 @@ label {
     border-bottom: solid 1px;
 }
 
-.section-like {
-    padding-top: 0;
-}
 
-.section-like h3 {
-    font-family: 'Space Mono';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-}
 
 .previous-post img,
 .next-post img {
@@ -517,4 +542,85 @@ label {
 
 .previous-post:hover .img1, .next-post:hover .img2 {
     display: block;
+}
+
+
+
+.thumbnail img {
+    display: block;
+}
+
+/* La section vous aimerez aussi */
+
+.section-like {
+    padding-top: 0;
+}
+
+.section-like h3 {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+
+
+.thumbnail-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumbnail {
+    position: relative;
+    width: 48%;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail:hover::before {
+    opacity: 1;
+}
+
+.thumbnail::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.thumbnail:hover::after {
+    text-shadow: none;
+}
+
+.thumbnail-container ul {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.thumbnail-container li {
+    font-size: 16px;
+    line-height: 1.5;
 }
