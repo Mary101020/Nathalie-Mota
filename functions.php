@@ -30,6 +30,4 @@ function enqueue_my_script() {
 add_action( 'wp_enqueue_scripts', 'enqueue_my_script' );
 
 
-  
-//echo get_stylesheet_directory();
 

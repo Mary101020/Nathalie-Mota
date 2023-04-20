@@ -36,24 +36,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-// Find all thumbnail images with a data-photo attribute
-const thumbnails = document.querySelectorAll('.thumbnail[data-photo]');
+const previousPostLink = document.querySelector('.previous-post');
+const nextPostLink = document.querySelector('.next-post');
+const thumbnailContainer = document.querySelector('.thumbnail-container');
+const thumbnails = thumbnailContainer ? thumbnailContainer.querySelectorAll('.thumbnail') : null;
+const thumbnailImage = document.querySelector('.thumbnail-preview');
 
-// For each thumbnail image
-thumbnails.forEach(thumbnail => {
-    // Get the URL of the corresponding photo
-    const photoUrl = thumbnail.dataset.photo;
+function getThumbnailUrl(postUrl) {
+  const thumbnail = thumbnailContainer ? thumbnailContainer.querySelector(`img[data-photo="${postUrl}"]`) : null;
+  if (thumbnail && thumbnail.getAttribute('src')) {
+    return thumbnail.getAttribute('src');
+  }
+  return null;
+}
 
-    // When the mouse hovers over the thumbnail
-    thumbnail.addEventListener('mouseover', () => {
-        // Set the src attribute of the thumbnail to the photo URL
-        thumbnail.src = photoUrl;
-    });
-
-    // When the mouse leaves the thumbnail
-    thumbnail.addEventListener('mouseout', () => {
-        // Reset the src attribute of the thumbnail to the thumbnail URL
-        thumbnail.src = thumbnail.dataset.thumbnail;
-    });
+previousPostLink.addEventListener('mouseover', function(event) {
+    const previousPostUrl = event.currentTarget.getAttribute('href');
+    const previousThumbnailUrl = getThumbnailUrl(previousPostUrl);
+    if (previousThumbnailUrl) {
+      thumbnailImage.src = previousThumbnailUrl;
+    }
 });
 
+nextPostLink.addEventListener('mouseover', function(event) {
+    const nextPostUrl = event.currentTarget.getAttribute('href');
+    const nextThumbnailUrl = getThumbnailUrl(nextPostUrl);
+    if (nextThumbnailUrl) {
+      thumbnailImage.src = nextThumbnailUrl;
+    }
+});

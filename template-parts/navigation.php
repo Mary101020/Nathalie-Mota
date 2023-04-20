@@ -7,7 +7,7 @@
  * @since Twenty Twenty 1.0
  */
 
- $args = array(
+$args = array(
 	'post_type' => 'attachment',
 	'post_mime_type' => 'image',
 	'posts_per_page' => -1,
@@ -57,49 +57,31 @@ if ($next_post || $prev_post) {
 		<nav class="pagination-single section-inner<?php echo esc_attr($pagination_classes); ?>"
 			aria-label="<?php esc_attr_e('Post', 'twentytwenty'); ?>">
 
-			
+
 
 			<div class="pagination-single-inner">
 
-			<?php if ($prev_post): ?>
-    <?php $prev_post_id = $prev_post->ID; ?>
-    <a class="previous-post" href="<?php echo esc_url(get_permalink($prev_post_id)); ?>">
-        <span class="arrow" aria-hidden="true">&larr;</span>
-        <?php if ($photo_data): ?>
-            <?php foreach ($photo_data as $index => $photo): ?>
-                <?php if (has_post_thumbnail($prev_post_id) && $photo['photo_url'] === get_the_post_thumbnail_url($prev_post_id, 'full')): ?>
-                    <div class="thumbnail-container">
-                        <img src="<?php echo esc_url($photo['thumb_url']); ?>" class="thumbnail"
-                             data-photo="<?php echo esc_url($photo['photo_url']); ?>">
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </a>
-<?php endif; ?>
+				<?php if ($prev_post): ?>
+					<?php $prev_post_id = $prev_post->ID; ?>
+					<a class="previous-post" href="<?php echo esc_url(get_permalink($prev_post_id)); ?>">
+						<?php echo '<img class="img1" src="' . get_field("Photo", $prev_post_id)["url"] . '">'; ?>
+						<span class="arrow" aria-hidden="true">&larr;</span>
+					</a>
+				<?php endif; ?>
 
-<?php if ($next_post): ?>
-    <?php $next_post_id = $next_post->ID; ?>
-    <a class="next-post" href="<?php echo esc_url(get_permalink($next_post_id)); ?>">
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-        <?php if ($photo_data): ?>
-            <?php foreach ($photo_data as $index => $photo): ?>
-                <?php if (has_post_thumbnail($next_post_id) && $photo['photo_url'] === get_the_post_thumbnail_url($next_post_id, 'full')): ?>
-                    <div class="thumbnail-container">
-                        <img src="<?php echo esc_url($photo_data[$index - 1]['thumb_url']); ?>" class="thumbnail"
-                             data-photo="<?php echo esc_url($photo_data[$index - 1]['photo_url']); ?>">
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </a>
-<?php endif; ?>
+				<?php if ($next_post): ?>
+					<?php $next_post_id = $next_post->ID; ?>
+					<a class="next-post" href="<?php echo esc_url(get_permalink($next_post_id)); ?>">
+						<?php echo '<img class="img2" src="' . get_field("Photo", $next_post_id)["url"] . '">'; ?>
+						<span class="arrow" aria-hidden="true">&rarr;</span>
+					</a>
+				<?php endif; ?>
 
 
 
 			</div><!-- .pagination-single-inner -->
 
-			
+
 
 		</nav><!-- .pagination-single -->
 	</div><!-- .pagination-thumbnails -->

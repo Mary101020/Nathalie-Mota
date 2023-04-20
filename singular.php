@@ -62,7 +62,7 @@ get_header(); ?>
 
 			</div>
 			<div class="photo-description">
-				<?php echo '<img src="' . get_field("Photo", $prev_post->ID)["url"] . '">'; ?>
+				<?php echo '<img src="' . get_field("Photo", $current_post_id)["url"] . '">'; ?>
 			</div>
 		</section>
 		<section class="contact-content">
@@ -71,8 +71,8 @@ get_header(); ?>
 				data-photo-ref="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
 			<?php get_template_part('template_parts/contact', 'modal'); ?>
 		</section>
-	</div>
-</main>
+	
+
 <!-- #site-content -->
 
 
@@ -90,7 +90,7 @@ if (is_single()) {
 	<h3>VOUS AIMEREZ AUSSI</h3>
 	<div class="thumbnail-container">
 		<?php
-		// Get the category IDs of the current post
+		// Obtenir les identifiants de catégorie du post actuel
 		$category_ids = array();
 		$categories = get_the_terms(get_the_ID(), 'categorie');
 		if ($categories && !is_wp_error($categories)) {
@@ -99,7 +99,7 @@ if (is_single()) {
 			}
 		}
 
-		// Query two posts from the same category as the current post
+		// Interroger deux publications de la même catégorie que la publication actuelle
 		$args = array(
 			'post_type' => 'post',
 			'posts_per_page' => 2,
@@ -108,14 +108,14 @@ if (is_single()) {
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'categorie',
-					'field' => 'id',
+					'field' => 'term_id',
 					'terms' => $category_ids,
 				),
 			),
 		);
 		$query = new WP_Query($args);
 
-		// Loop through the posts and display the thumbnails
+		// Parcourez les posts et affichez les images
 		while ($query->have_posts()) {
 			$query->the_post();
 
@@ -127,15 +127,15 @@ if (is_single()) {
 			}
 		}
 
-
-
-		// Restore original post data
+		// Restaurer les données de publication d'origine
 		wp_reset_postdata();
 		?>
 	</div>
 </section>
+</div>
+</main>
 
 <?php get_template_part('template-parts/footer-menus-widgets'); ?>
 
-
 <?php get_footer(); ?>
+

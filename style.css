@@ -68,15 +68,17 @@ Updated: 2023-04-06 07:42:41
     font-size: 16px;
     line-height: 24px;
 }
-.menu-top{
+
+.menu-top {
     height: 80%;
 }
 
-.menu-modal nav *{
+.menu-modal nav * {
     height: 100%;
 }
 
-.nav-toggle .toggle-icon, .nav-toggle svg {
+.nav-toggle .toggle-icon,
+.nav-toggle svg {
     height: 1.3rem;
 }
 
@@ -95,16 +97,17 @@ Updated: 2023-04-06 07:42:41
 
 
 @media screen and (max-width: 999px) {
-#myBtn {
-    font-family: 'Space Mono' !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    font-size: 23px !important;
-    line-height: 34px !important;
-    color: #fff !important;
-    background-color: #E00000 !important;
-    padding: 0 !important;
-}}
+    #myBtn {
+        font-family: 'Space Mono' !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 23px !important;
+        line-height: 34px !important;
+        color: #fff !important;
+        background-color: #E00000 !important;
+        padding: 0 !important;
+    }
+}
 
 
 .menu-modal nav * {
@@ -194,7 +197,7 @@ button.close-nav-toggle svg {
 /*------------------------------------ La Modale---------------------------------*/
 
 #myBtn {
-    color: black ;
+    color: black;
     font-family: 'Space Mono';
     font-style: normal;
     font-weight: 400;
@@ -395,8 +398,6 @@ label {
     display: flex;
     padding: 48px 0;
     border-bottom: solid 1px;
-    margin-left: 7px;
-
 }
 
 .contact-content p {
@@ -431,17 +432,10 @@ label {
 
 /* La pagination */
 
-.thumbnail {
-    display: none;
-}
 
-.pagination-thumbnails:hover .thumbnail {
-    display: block;
-}
 
 .pagination-thumbnails .arrow {
     font-size: 1em;
-    /* adjust the size as needed */
     display: inline-block;
     padding: 0.2em;
     color: black;
@@ -449,21 +443,44 @@ label {
     font-family: sans-serif;
 }
 
+
+
+@media (min-width: 700px) {
+    .pagination-single .next-post .arrow {
+        margin: 0;
+    }
+}
+
 .pagination-single {
 
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end !important;
     margin-right: 0 !important;
+    width: 20%;
+
+}
+
+.pagination-single a {
+    align-items: baseline;
+    display: flex;
+    font-weight: 600;
+    letter-spacing: -0.0275em;
+    text-decoration: none;
+    flex: 1;
+}
+
+.pagination-single-inner {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end !important;
 }
 
 .pagination-thumbnails {
     border-bottom: solid 1px;
-    margin: 0 86px;
-    width: 85%;
 }
 
 .section-like {
-    margin: 0 86px;
     padding-top: 0;
 }
 
@@ -473,4 +490,31 @@ label {
     font-weight: 400;
     font-size: 18px;
     line-height: 27px;
+}
+
+.previous-post img,
+.next-post img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.previous-post,
+.next-post {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 700px) {
+    .pagination-single .next-post {
+        flex-direction: column;
+        text-align: right;
+    }
+}
+
+.previous-post .img1, .next-post .img2 {
+    display: none;
+}
+
+.previous-post:hover .img1, .next-post:hover .img2 {
+    display: block;
 }
