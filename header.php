@@ -135,7 +135,7 @@
 							}
 							?>
 							<button id="myBtn">CONTACT</button>
-							<?php get_template_part('template_parts/contact', 'modal'); ?>
+							<?php get_template_part('template-parts/contact', 'modal'); ?>
 
 						</ul>
 

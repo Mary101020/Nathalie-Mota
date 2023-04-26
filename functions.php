@@ -30,4 +30,9 @@ function enqueue_my_script() {
 add_action( 'wp_enqueue_scripts', 'enqueue_my_script' );
 
 
+function wpse_enqueue_mobile_style() {
+    wp_register_style( 'mobile-style', get_stylesheet_directory_uri() . '/mobile.css', array(), '1.0');
+    wp_enqueue_style( 'mobile-style' );
+}
+add_action( 'wp_enqueue_scripts', 'wpse_enqueue_mobile_style' );
 

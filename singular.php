@@ -66,17 +66,13 @@ get_header(); ?>
 			</div>
 		</section>
 		<section class="contact-content">
+			<div class="cnt-btns">
 			<p>Cette photo vous intéresse ?</p>
 			<button id="myOtherBtn"
 				data-photo-ref="<?php echo esc_attr(get_post_meta(get_the_ID(), 'reference', true)); ?>">Contact</button>
-			<?php get_template_part('template_parts/contact', 'modal'); ?>
-		</section>
-
-
-		<!-- #site-content -->
-
-
-		<?php
+			</div>
+			<?php get_template_part('template-parts/contact', 'modal'); ?>
+			<?php
 
 		if (is_single()) {
 
@@ -84,6 +80,13 @@ get_header(); ?>
 
 		}
 		?>
+		</section>
+
+
+		<!-- #site-content -->
+
+
+		
 
 		<!-- ------------------------La section vous aimerez aussi---------------- -->
 		<section class="section-like">
@@ -91,61 +94,46 @@ get_header(); ?>
 			<div class="thumbnail-container">
 				<?php
 				// Obtenir les identifiants de catégorie du post actuel
-				$category_ids = array();
-				$categories = get_the_terms(get_the_ID(), 'categorie');
-				//var_dump($categories);
-				if ($categories && !is_wp_error($categories)) {
-					foreach ($categories as $category) {
-						$category_ids[] = $category->term_id;
-					}
-				}
-
+				
+				$categorie = get_the_terms(get_the_ID(), 'categorie')[0];
+				
+				
+				
 				// Interroger deux publications de la même catégorie que la publication actuelle
 				$args = array(
-					'post_type' => 'post',
+					'post_type' => 'photo',
 					'posts_per_page' => 2,
-					'orderby' => 'rand',
-					'post__not_in' => array(get_the_ID()),
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'categorie',
+					 'orderby' => 'rand',
+					 'post__not_in' => array(get_the_ID()),
+					 'tax_query' => array(
+					 	array(
+					 		'taxonomy' => 'categorie',
 							'field' => 'term_id',
-							'terms' => $category_ids,
+					 		'terms' => array($categorie->term_id),
 						),
 					),
 				);
+				
 				$query = new WP_Query($args);
-				//var_dump($category_ids);
 				
 				// Parcourez les posts et affichez les images
 				while ($query->have_posts()) {
 					$query->the_post();
-
-					$thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'thumbnail')[0];
-					if ($thumbnail_url) {
-						echo '<div class="thumbnail" data-photo="' . get_permalink() . '">';
-						echo '<img src="' . $thumbnail_url . '" alt="' . get_the_title() . '">';
-						echo '</div>';
-					}
+					// echo "<pre>";
+					// var_dump(get_post_thumbnail_id(get_the_ID()));
+					// echo "</pre>";
+					 $thumbnail_url = get_field("Photo", get_the_ID())["url"];
+					//var_dump($thumbnail_url);
+					 if ($thumbnail_url) {
+					 	echo '<div class="thumbnail" data-photo="' . get_permalink() . '">';
+					 	echo '<img src="' . $thumbnail_url . '" alt="' . get_the_title() . '">';
+					 	echo '</div>';
+						
+					 }
+					echo "<br>";
 				}
 
-				$query = new WP_Query($args);
-
-				// Si aucun post n'existe dans la même catégorie, afficher "No posts found."
-				if ($query->have_posts()) {
-					echo '<ul>';
-					while ($query->have_posts()) {
-						$query->the_post();
-						echo '<li>' . get_the_title() . '</li>';
-					}
-					echo '</ul>';
-				} else {
-					echo 'No posts found.';
-				}
-
-
-				// Restaurer les données de publication d'origine
-				//wp_reset_postdata();
+				wp_reset_postdata();
 				?>
 			</div>
 		</section>

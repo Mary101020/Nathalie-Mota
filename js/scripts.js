@@ -36,32 +36,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 
-const previousPostLink = document.querySelector('.previous-post');
-const nextPostLink = document.querySelector('.next-post');
-const thumbnailContainer = document.querySelector('.thumbnail-container');
-const thumbnails = thumbnailContainer ? thumbnailContainer.querySelectorAll('.thumbnail') : null;
-const thumbnailImage = document.querySelector('.thumbnail-preview');
 
-function getThumbnailUrl(postUrl) {
-  const thumbnail = thumbnailContainer ? thumbnailContainer.querySelector(`img[data-photo="${postUrl}"]`) : null;
-  if (thumbnail && thumbnail.getAttribute('src')) {
-    return thumbnail.getAttribute('src');
-  }
-  return null;
-}
 
-previousPostLink.addEventListener('mouseover', function(event) {
-    const previousPostUrl = event.currentTarget.getAttribute('href');
-    const previousThumbnailUrl = getThumbnailUrl(previousPostUrl);
-    if (previousThumbnailUrl) {
-      thumbnailImage.src = previousThumbnailUrl;
-    }
-});
 
-nextPostLink.addEventListener('mouseover', function(event) {
-    const nextPostUrl = event.currentTarget.getAttribute('href');
-    const nextThumbnailUrl = getThumbnailUrl(nextPostUrl);
-    if (nextThumbnailUrl) {
-      thumbnailImage.src = nextThumbnailUrl;
-    }
-});
+
