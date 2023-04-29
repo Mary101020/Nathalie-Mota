@@ -119,11 +119,9 @@ get_header(); ?>
 				// Parcourez les posts et affichez les images
 				while ($query->have_posts()) {
 					$query->the_post();
-					// echo "<pre>";
-					// var_dump(get_post_thumbnail_id(get_the_ID()));
-					// echo "</pre>";
+					
 					 $thumbnail_url = get_field("Photo", get_the_ID())["url"];
-					//var_dump($thumbnail_url);
+					
 					 if ($thumbnail_url) {
 					 	echo '<div class="thumbnail" data-photo="' . get_permalink() . '">';
 					 	echo '<img src="' . $thumbnail_url . '" alt="' . get_the_title() . '">';

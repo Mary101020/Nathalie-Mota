@@ -19,34 +19,69 @@ get_header();
 
 ?>
 <div class="banner-content">
-<?php
-$args = array(
-	'orderby' => 'rand',
-	'posts_per_page' => '1',
-	'post_type' => 'Photo'
-);
+	<?php
+	$args = array(
+		'orderby' => 'rand',
+		'posts_per_page' => '1',
+		'post_type' => 'Photo'
+	);
 
-$the_query = new WP_Query($args);
-// echo "<pre>";
-// var_dump($the_query);
-// echo "</pre>";
+	$the_query = new WP_Query($args);
 
 
-//if ($the_query->have_posts()):
-//var_dump($the_query);
-while ($the_query->have_posts()):
-	$the_query->the_post();
-	//var_dump($the_query);
-	//$current_post_id = get_the_ID();
-	$photo_url = get_field("Photo", get_the_ID())["url"];
-	//var_dump($photo_url);
-	echo '<h1>PHOTOGRAPHE EVENT</h1>';
-	echo'<img class="banner-img" src="' . $photo_url . '">';
-endwhile;
-wp_reset_postdata();
-//endif;
-?>
+
+
+	while ($the_query->have_posts()):
+		$the_query->the_post();
+
+		$photo_url = get_field("Photo", get_the_ID())["url"];
+		echo '<h1>PHOTOGRAPHE EVENT</h1>';
+		echo '<img class="banner-img" src="' . $photo_url . '">';
+	endwhile;
+	wp_reset_postdata();
+
+	?>
 </div>
+
+<section>
+	
+
+
+		<div class="image-grid">
+			<?php
+
+			// function load_posts()
+			// {
+			// 	$page = $_POST['page'];
+			// 	$postsPerPage = $_POST['posts_per_page'];
+				$args = array(
+					'post_type' => 'Photo',
+
+				);
+				$query = new WP_Query($args);
+
+				if ($query->have_posts()) {
+					while ($query->have_posts()) {
+						$query->the_post();
+						$image = get_field('Photo');
+						?>
+						<div class="image-grid-item">
+							<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+						</div>
+						<?php
+					}
+					wp_reset_postdata();
+				}
+			// 	wp_die();
+			// }
+			// add_action('wp_ajax_load_posts', 'load_posts');
+			// add_action('wp_ajax_nopriv_load_posts', 'load_posts');
+			?>
+		</div>
+		
+
+	
+</section>
 
 
 
