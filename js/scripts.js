@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 var ajaxurl = 'http://nathalie-mota.local/wp-admin/admin-ajax.php';
 
+// Le bouton "charger plus" sur la page d'accueil
+
 jQuery(function($) {
   $('#load-more-btn').on('click', function() {
       var page = $(this).data('page');
-      
-
       
       $.ajax({
           type: 'POST',
@@ -58,20 +58,22 @@ jQuery(function($) {
               page: page
           },
           beforeSend: function() {
-              // Add a loading indicator here
+             
           },
           success: function(response) {
               $('#post-container').append(response);
               $('#load-more-btn').data('page', parseInt(page) + 1);
           },
           complete: function() {
-              // Remove the loading indicator here
           }
       });
 
       
   });
 });
+
+
+// Le tri des photos par rapport a la date de publication
 
 jQuery(document).ready(function($) {
   var ajaxurl = 'http://nathalie-mota.local/wp-admin/admin-ajax.php';
@@ -101,6 +103,44 @@ jQuery(document).ready(function($) {
     sort_posts(order);
   });
 });
+
+
+// Le bouton "plus de photo" sur la page singular.php
+
+var morePhoto = document.getElementById('more-photo');
+if (morePhoto) {
+  morePhoto.addEventListener('click', function() {
+    window.location.href = 'http://nathalie-mota.local/#post-section';
+  });
+}
+
+
+
+  // Get the select elements by id
+  const categorieSelect = document.getElementById('categorie-select');
+  const formatSelect = document.getElementById('format-select');
+
+  // Add event listeners to detect changes
+  categorieSelect.addEventListener('change', filterPosts);
+  formatSelect.addEventListener('change', filterPosts);
+
+  function filterPosts() {
+    // Get the selected category and format values
+    const categorieValue = categorieSelect.value;
+    const formatValue = formatSelect.value;
+
+    // Send an Ajax request to get the filtered posts
+    const xhr = new XMLHttpRequest();
+    var ajaxurl = 'http://nathalie-mota.local/wp-admin/admin-ajax.php';
+    xhr.open('POST', ajaxurl);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+      // Replace the current posts with the filtered posts
+      const response = JSON.parse(xhr.responseText);
+      document.querySelector('.image-grid').innerHTML = response.html;
+    };
+    xhr.send('action=get_filtered_posts&categorie=' + categorieValue + '&format=' + formatValue);
+  }
 
 
 

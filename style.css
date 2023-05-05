@@ -131,7 +131,9 @@ button.close-nav-toggle svg {
 }
 
 /* --------------------------Le footer------------------------------- */
-
+.footer-top-visible .footer-nav-widgets-wrapper {
+    margin-top: 0;
+}
 
 .footer-menu a:hover {
     font-weight: 700;
@@ -393,7 +395,7 @@ label {
 
 
 #myBtn2,
-input[type="submit"] {
+input[type="submit"], #more-photo {
     font-family: 'Space Mono';
     font-style: normal;
     font-weight: 400;
@@ -410,7 +412,8 @@ input[type="submit"] {
     margin: 33px 20px;
 }
 
-#myBtn2::before {
+#myBtn2::before, 
+#more-photo::before {
     content: "";
     display: block;
     position: absolute;
@@ -423,31 +426,24 @@ input[type="submit"] {
     transition: width 0.5s ease-in-out;
 }
 
-input[type="submit"]::before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background-color: black;
-    width: 0%;
-    z-index: -9;
-    transition: width 0.5s ease-in-out;
-}
-
 #myBtn2:hover::before,
-input[type="submit"]:hover::before {
+#more-photo:hover::before {
     width: 100%;
 }
 
 #myBtn2:hover,
-input[type="submit"]:hover {
+#more-photo:hover {
     color: white !important;
     text-decoration: none;
 }
 
-
+.more-btn {
+    display: flex;
+    justify-content: center;
+}
+#more-photo {
+    width: 40vh;
+}
 
 
 .wp-block-image {
@@ -546,6 +542,7 @@ input[type="submit"]:hover {
 
 .section-like {
     padding-top: 0;
+    padding-bottom: 0;
 }
 
 .section-like h3 {
@@ -696,7 +693,7 @@ input[type="submit"]:hover {
 }
 
 .eye-img {
-    display: none ; 
+    display: none;
     position: absolute;
     top: 50% !important;
     left: 50%;
@@ -745,6 +742,18 @@ input[type="submit"]:hover {
     display: flex;
     justify-content: space-between;
     padding: 32px 86px;
+}
+
+.sort-section option {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.sort-section select {
+    width: 25vh;
 }
 
 .cat_form-div {

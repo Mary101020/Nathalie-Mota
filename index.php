@@ -56,8 +56,8 @@ get_header();
 			?>
 			<div class="categorie">
 				<label>CATÉGORIES</label>
-				<select name="categorie">
-					<option value="">Toutes les catégories</option>
+				<select name="categorie" id="categorie-select">
+					<option value=""></option>
 
 					<?php foreach ($terms as $term): ?>
 						<option value="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
@@ -78,8 +78,8 @@ get_header();
 			?>
 			<div class="format">
 				<label>FORMATS</label>
-				<select name="format">
-					<option value="">Toutes les formats</option>
+				<select name="format" id="format-select">
+					<option value=""></option>
 					<?php foreach ($terms as $term): ?>
 						<option value="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
 					<?php endforeach; ?>
@@ -90,15 +90,16 @@ get_header();
 	<div class="sort-div">
 		<label for="sort">TRIER PAR</label>
 		<select id="sort-posts">
-			<option value="DESC">Le plus récent</option>
-			<option value="ASC">Le plus ancien</option>
+			<option value=""></option>
+			<option value="DESC">Nouveautés</option>
+			<option value="ASC">Les plus anciens</option>
 		</select>
 	</div>
 </section>
 
 
 
-<section class="post-section">
+<section id= "post-section" class="post-section">
 	<div class="image-grid">
 
 		<?php
@@ -114,8 +115,7 @@ get_header();
 				$image = get_field('Photo');
 				?>
 				<div class="image-grid-item">
-					<img class="img-post" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
-					<div class="overlay">
+					<img class="img-post" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">					<div class="overlay">
 						<a href="#"><img class="fullscreen-img"
 								src="<?php echo get_stylesheet_directory_uri() . '/img/fullscreen.png'; ?>"
 								alt="fullscreen_img"></a>

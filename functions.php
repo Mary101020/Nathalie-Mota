@@ -42,6 +42,8 @@ function wpse_enqueue_mobile_style()
 add_action('wp_enqueue_scripts', 'wpse_enqueue_mobile_style');
 
 
+
+// La fontion ajax pour cgarger lus des photos sur la page d'accueil
 function load_more_posts()
 {
     $paged = $_POST['page'];
@@ -60,6 +62,24 @@ function load_more_posts()
             ?>
             <div class="image-grid-item">
                 <img class="img-post" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="img-fluid">
+                <a href="#"><img class="fullscreen-img"
+								src="<?php echo get_stylesheet_directory_uri() . '/img/fullscreen.png'; ?>"
+								alt="fullscreen_img"></a>
+						<a href="<?php the_permalink(); ?>"><img class="eye-img"
+								src="<?php echo get_stylesheet_directory_uri() . '/img/eye.png'; ?>" alt="eye_img"></a>
+						<h2 class="post-title">
+							<?php the_title(); ?>
+						</h2>
+						<span class="post-category">
+							<?php $categories = get_the_terms(get_the_ID(), 'categorie');
+							if ($categories && !is_wp_error($categories)) {
+								$category_names = array();
+								foreach ($categories as $category) {
+									$category_names[] = $category->name;
+								}
+								echo '<p> ' . implode(', ', $category_names) . '</p>';
+							} ?>
+						</span>
             </div>
             <?php
         }
@@ -71,7 +91,7 @@ add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
 
 
-
+// La fonction ajax pour trier les photos par rapport a la date de publication
 function get_images_by_date()
 {
     $order = $_POST['order'];
@@ -121,3 +141,80 @@ function get_images_by_date()
 }
 add_action('wp_ajax_get_images_by_date', 'get_images_by_date');
 add_action('wp_ajax_nopriv_get_images_by_date', 'get_images_by_date');
+
+// La fonction ajax pour filtrer les photos par rapport a la categorie et format
+
+add_action('wp_ajax_get_filtered_posts', 'get_filtered_posts');
+add_action('wp_ajax_nopriv_get_filtered_posts', 'get_filtered_posts');
+
+function get_filtered_posts() {
+    $categorie = $_POST['categorie'];
+    $format = $_POST['format'];
+  
+    $args = array(
+      'post_type' => 'Photo',
+      'orderby' => 'date',
+      'order' => 'DESC',
+      'tax_query' => array(
+        'relation' => 'AND',
+      ),
+    );
+  
+    if ($categorie) {
+      $args['tax_query'][] = array(
+        'taxonomy' => 'categorie',
+        'field' => 'slug',
+        'terms' => $categorie,
+      );
+    }
+  
+    if ($format) {
+      $args['tax_query'][] = array(
+        'taxonomy' => 'format',
+        'field' => 'slug',
+        'terms' => $format,
+      );
+    }
+  
+    $query = new WP_Query($args);
+  
+    $images = array();
+    if ($query->have_posts()) {
+      while ($query->have_posts()) {
+        $query->the_post();
+        $image = get_field('Photo');
+        array_push($images, $image);
+      }
+      wp_reset_postdata();
+    }
+  
+    $data = array(
+      'success' => true,
+      'html' => '',
+    );
+    if (!empty($images)) {
+        foreach ($images as $image) {
+            $html .= '<div class="image-grid-item">';
+            $html .= '<img class="img-post" src="' . $image['url'] . '" alt="' . $image['alt'] . '" class="img-fluid">';
+            $html .= '<a href="#"><img class="fullscreen-img" src="' . get_stylesheet_directory_uri() . '/img/fullscreen.png" alt="fullscreen_img"></a>';
+            $html .= '<a href="' . get_permalink() . '"><img class="eye-img" src="' . get_stylesheet_directory_uri() . '/img/eye.png" alt="eye_img"></a>';
+            $html .= '<h2 class="post-title">' . get_the_title() . '</h2>';
+            $html .= '<span class="post-category">';
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+            if ($categories && !is_wp_error($categories)) {
+                $category_names = array();
+                foreach ($categories as $category) {
+                    $category_names[] = $category->name;
+                }
+                $html .= '<p>' . implode(', ', $category_names) . '</p>';
+            }
+            $html .= '</span></div>';
+        }
+        $data['html'] = $html;
+    }
+    
+  
+    echo json_encode($data);
+    wp_die();
+  }
+  

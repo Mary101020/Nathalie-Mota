@@ -134,6 +134,9 @@ get_header(); ?>
 				wp_reset_postdata();
 				?>
 			</div>
+			<div class="more-btn">
+			<button id="more-photo">Toutes les photos</button>
+			</div>
 		</section>
 	</div>
 </main>
