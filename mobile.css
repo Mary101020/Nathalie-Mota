@@ -35,15 +35,15 @@ Updated: 2023-04-06 07:42:41
 }
 
 @media screen and (max-width: 999px) {
-    #myBtn {
-        font-family: 'Space Mono' !important;
-        font-style: normal !important;
-        font-weight: 400 !important;
-        font-size: 23px !important;
-        line-height: 34px !important;
-        color: #fff !important;
-        background-color: #E00000 !important;
-        padding: 0 !important;
+    #myBtn1 {
+        font-family: 'Space Mono' ;
+        font-style: normal ;
+        font-weight: 400 ;
+        font-size: 23px ;
+        line-height: 34px;
+        color: #fff ;
+        background-color: #E00000;
+        padding: 0;
     }
 }
 
@@ -103,7 +103,7 @@ Updated: 2023-04-06 07:42:41
 }
 
 @media screen and (max-width: 999px) {
-    #myOtherBtn {
+    #myBtn2 {
         flex-direction: column;
         display: flex;
         align-items: center !important;
@@ -117,6 +117,13 @@ Updated: 2023-04-06 07:42:41
 @media screen and (max-width: 999px) {
     .pagination-thumbnails {
         display: none;
+        
+    }
+}
+
+@media screen and (max-width: 999px) {
+    .modal {
+        display: block;
         
     }
 }

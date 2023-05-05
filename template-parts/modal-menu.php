@@ -108,7 +108,7 @@
 
 							}
 							?>
-							<button id="myBtn" class="btn-mobile">CONTACT</button>
+							<button id="myBtn1" class="btn-mobile">CONTACT</button>
 
 						</ul>
 

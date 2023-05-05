@@ -392,14 +392,14 @@ label {
 
 
 
-#myOtherBtn,
+#myBtn2,
 input[type="submit"] {
     font-family: 'Space Mono';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
-    background-color: transparent;
+    background-color: transparent !important;
     color: black !important;
     position: relative;
     z-index: 1;
@@ -410,7 +410,7 @@ input[type="submit"] {
     margin: 33px 20px;
 }
 
-#myOtherBtn::before {
+#myBtn2::before {
     content: "";
     display: block;
     position: absolute;
@@ -436,12 +436,12 @@ input[type="submit"]::before {
     transition: width 0.5s ease-in-out;
 }
 
-#myOtherBtn:hover::before,
+#myBtn2:hover::before,
 input[type="submit"]:hover::before {
     width: 100%;
 }
 
-#myOtherBtn:hover,
+#myBtn2:hover,
 input[type="submit"]:hover {
     color: white !important;
     text-decoration: none;
@@ -467,6 +467,9 @@ input[type="submit"]:hover {
     font-family: sans-serif;
 }
 
+.pagination-thumbnails {
+    position: relative;
+}
 
 
 
@@ -504,6 +507,8 @@ input[type="submit"]:hover {
     object-fit: cover;
     height: 50px !important;
     width: 50px !important;
+    position: absolute;
+    top: 30px;
 }
 
 .previous-post,
@@ -514,10 +519,14 @@ input[type="submit"]:hover {
 
 
 
-/* .previous-post .img1,
+.previous-post .img1,
 .next-post .img2 {
     display: none;
-} */
+}
+
+.next-post .img2 {
+    right: 0;
+}
 
 .previous-post:hover .img1,
 .next-post:hover .img2 {
@@ -605,7 +614,8 @@ input[type="submit"]:hover {
     }
 }
 
-.image-grid {
+.image-grid,
+#post-container {
     display: flex;
     flex-wrap: wrap;
     padding: 0 80px;
@@ -614,10 +624,131 @@ input[type="submit"]:hover {
 .image-grid-item {
     flex: 0 0 calc(50% - 20px);
     margin: 10px;
+    position: relative;
 }
 
-.image-grid-item img {
+.image-grid-item .img-post {
     width: 100vh;
     height: 100vh;
-    object-fit:cover ;
+    object-fit: cover;
+}
+
+.image-grid-item a {
+    z-index: 10 !important;
+}
+
+.image-grid-item:hover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.post-title {
+    margin: 0;
+    bottom: 12px;
+    left: 20px;
+}
+
+.post-category {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+
+.image-grid-item:hover .post-title,
+.image-grid-item:hover .post-category {
+    display: block;
+}
+
+.post-title,
+.post-category {
+    display: none;
+    color: white;
+    position: absolute;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    z-index: 2;
+}
+
+.fullscreen-img {
+    display: none;
+    object-fit: cover !important;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    transition: all 0.3s ease-in-out;
+    z-index: 20;
+}
+
+
+.image-grid-item:hover .fullscreen-img,
+.image-grid-item:hover .eye-img {
+    display: block;
+}
+
+.eye-img {
+    display: none ; 
+    position: absolute;
+    top: 50% !important;
+    left: 50%;
+    object-fit: cover !important;
+    transition: all 0.3s ease-in-out;
+    height: auto;
+    width: auto;
+    z-index: 20;
+}
+
+.image-grid-item:hover .eye-img {
+    display: block;
+}
+
+.post-section {
+    padding-bottom: 0;
+    padding-top: 5vh;
+}
+
+#load-more-btn {
+    background-color: #E5E5E5;
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.btn-load-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    margin-bottom: 86px;
+}
+
+
+
+
+/* La section de tri */
+
+.sort-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 86px;
+}
+
+.cat_form-div {
+    display: flex;
+    justify-content: space-between;
+    width: 49%;
 }
