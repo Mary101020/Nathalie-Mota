@@ -35,7 +35,7 @@ get_header();
 		$the_query->the_post();
 
 		$photo_url = get_field("Photo", get_the_ID())["url"];
-		echo '<h1>PHOTOGRAPHE EVENT</h1>';
+		echo '<img class="event-banner" src="' . get_stylesheet_directory_uri() . '/img/event-banner.png" alt="Photographer Event">';
 		echo '<img class="banner-img" src="' . $photo_url . '">';
 	endwhile;
 	wp_reset_postdata();
@@ -116,7 +116,7 @@ get_header();
 				?>
 				<div class="image-grid-item">
 					<img class="img-post" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">					<div class="overlay">
-						<a href="#"><img class="fullscreen-img"
+						<a class= "fullscreen-trigger" href="#"><img class="fullscreen-img"
 								src="<?php echo get_stylesheet_directory_uri() . '/img/fullscreen.png'; ?>"
 								alt="fullscreen_img"></a>
 						<a href="<?php the_permalink(); ?>"><img class="eye-img"

@@ -36,12 +36,12 @@ Updated: 2023-04-06 07:42:41
 
 @media screen and (max-width: 999px) {
     #myBtn1 {
-        font-family: 'Space Mono' ;
-        font-style: normal ;
-        font-weight: 400 ;
-        font-size: 23px ;
+        font-family: 'Space Mono';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 23px;
         line-height: 34px;
-        color: #fff ;
+        color: #fff;
         background-color: #E00000;
         padding: 0;
     }
@@ -98,7 +98,7 @@ Updated: 2023-04-06 07:42:41
         padding: 28px 75px !important;
         width: 100% !important;
         margin: 0 !important;
-        
+
     }
 }
 
@@ -111,20 +111,21 @@ Updated: 2023-04-06 07:42:41
         width: 30% !important;
         margin-left: 0 !important;
 
-        
+
     }
 }
+
 @media screen and (max-width: 999px) {
     .pagination-thumbnails {
         display: none;
-        
+
     }
 }
 
 @media screen and (max-width: 999px) {
     .modal {
         display: block;
-        
+
     }
 }
 
@@ -134,7 +135,7 @@ Updated: 2023-04-06 07:42:41
     .thumbnail-container {
         flex-direction: column;
         height: 100% !important;
-        
+
     }
 }
 
@@ -145,22 +146,65 @@ Updated: 2023-04-06 07:42:41
         margin: 0 !important;
         padding-top: 1px !important;
         width: 100% !important;
-        
+
     }
 }
 
 @media screen and (max-width: 999px) {
     .thumbnail img {
         height: 95vh !important;
-        
+
     }
 }
 
 
 @media screen and (max-width: 999px) {
     .header-footer-group {
-      
+
         margin: 0 !important;
     }
 }
 
+@media screen and (max-width: 999px) {
+
+    .image-grid,
+    #post-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 999px) {
+
+    .sort-div {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 999px) {
+
+    .cat_form-div {
+        width: 100% !important;
+        justify-content: space-between !important;
+        padding: 0 80px !important;
+    }
+}
+
+@media screen and (max-width: 999px) {
+
+    label {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 29px;
+    }
+}
+
+@media screen and (max-width: 999px) {
+
+    .sort-section select {
+        width: 41vh !important;
+        height: 7vh;
+    }
+}
