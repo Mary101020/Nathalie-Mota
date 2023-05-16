@@ -432,7 +432,8 @@ input[type="submit"], #more-photo {
 }
 
 #myBtn2:hover,
-#more-photo:hover {
+#more-photo:hover,
+input[type="submit"]:hover {
     color: white !important;
     text-decoration: none;
 }
@@ -596,7 +597,7 @@ input[type="submit"], #more-photo {
     position: absolute;
     top: 50%;
     right: 14%;
-    z-index: 5;
+    z-index: 1;
     width: 80%;
 }
 
@@ -755,11 +756,10 @@ input[type="submit"], #more-photo {
 
 
 /* Le lightbox */
-#lightbox-container {
-    display: none;
-}
 
-.lightbox-overlay {
+
+  
+  .lightbox-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -767,11 +767,7 @@ input[type="submit"], #more-photo {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 9999;
-    /* display: none; */
-  } 
-  
-  .lightbox-overlay.show {
-    display: block;
+    display: none;
   }
   
   .lightbox-modal {
@@ -782,7 +778,7 @@ input[type="submit"], #more-photo {
     width: 100%;
     height: 95%;
     max-width: 1200px;
-    background-color:transparent;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -822,8 +818,6 @@ input[type="submit"], #more-photo {
     cursor: pointer;
     text-decoration: none !important;
   }
-
-  
   
   .lightbox-prev {
     left: 10px;

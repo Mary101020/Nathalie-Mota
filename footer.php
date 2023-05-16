@@ -69,13 +69,14 @@
 </body>
 
 <div id="lightbox-container" class="lightbox-container">
-    <div class="lightbox-overlay"></div>
-    <div class="lightbox">
-        <img src="" alt="" class="lightbox-image">
-        <div class="lightbox-caption"></div>
-        
-    </div>
+  <div class="lightbox-overlay"></div>
+  <div class="lightbox-modal">
+    <img src="" alt="" class="lightbox-photo">
+  </div>
 </div>
+
+
+
 
 
 </html>

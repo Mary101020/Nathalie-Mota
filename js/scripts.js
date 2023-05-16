@@ -121,6 +121,7 @@ if (morePhoto) {
   const formatSelect = document.getElementById('format-select');
 
   // Add event listeners to detect changes
+  if (filterPosts) {
   categorieSelect.addEventListener('change', filterPosts);
   formatSelect.addEventListener('change', filterPosts);
 
@@ -140,7 +141,7 @@ if (morePhoto) {
       document.querySelector('.image-grid').innerHTML = response.html;
     };
     xhr.send('action=get_filtered_posts&categorie=' + categorieValue + '&format=' + formatValue);
-  }
+  }}
 
 
 

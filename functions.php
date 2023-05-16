@@ -43,13 +43,13 @@ add_action('wp_enqueue_scripts', 'wpse_enqueue_mobile_style');
 
 
 
-// La fontion ajax pour cgarger lus des photos sur la page d'accueil
+// La fontion ajax pour charger lus des photos sur la page d'accueil
 function load_more_posts()
 {
     $paged = $_POST['page'];
     $args = array(
         'post_type' => 'Photo',
-        'posts_per_page' => 2,
+        'posts_per_page' => 4,
         'paged' => $paged,
 
     );
